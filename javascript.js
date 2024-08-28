@@ -10,11 +10,7 @@ let computerScore = 0;
 function Start(){
     console.log("Rock Paper Scissors!")
 
-    const playerChoice = getPlayerChoice();
-    console.log("You chose: " + playerChoice);
-    const computerChoice = getComputerChoice();
-
-    playRound(playerChoice, computerChoice);
+    playGame(5);
 }
 
 // Returns the computer's choice of move
@@ -35,10 +31,7 @@ function getPlayerChoice(){
     return prompt("Choose \"Rock\" \"Paper\" or \"Scissors\":").toLocaleLowerCase();
 }
 
-function playRound(playerChoice, computerChoice){
-    // show round number
-    console.log("Round " + (++roundNum).toString());
-    
+function playRound(playerChoice, computerChoice){   
     // player wins
     if ((playerChoice == "rock" && computerChoice == "scissors") || (playerChoice == "paper" && computerChoice == "rock") || (playerChoice == "scissors" && computerChoice == "paper")) {
         console.log("Your " + playerChoice + " beats the computer's " + computerChoice + ". You win!");
@@ -58,6 +51,20 @@ function playRound(playerChoice, computerChoice){
     console.log("Score: \nYou: " + playerScore.toString() + "\nComputer: " + computerScore.toString());
 }
 
+function playGame(rounds){
+    for (let i = 0; i < rounds; i++) {
+         // show round number
+        console.log("Round " + (++roundNum).toString());
+        
+        // get choices
+        const playerChoice = getPlayerChoice();
+        console.log("You chose: " + playerChoice);
+        const computerChoice = getComputerChoice();
+
+        // evaluate round
+        playRound(playerChoice, computerChoice);
+    }
+}
 
 
 
